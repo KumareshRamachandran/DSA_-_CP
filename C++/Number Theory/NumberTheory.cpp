@@ -101,25 +101,26 @@ vector<int> getPrimeFactors(int x, const vector<int>& spf) {
 }
 
 int main() {
-    int maxLimit = 1000000; 
+    int maxLimit = 105;
     vector<int> spf;
     sieve(maxLimit, spf);
 
-    int n;
-    cout << "Enter a number: ";
-    cin >> n;
+    int n = 96;
+    // cout << "Enter a number: ";
+    // cin >> n;
 
-    if (n > maxLimit) {
-        cout << "Number exceeds precomputed limit." << endl;
-        return 1;
-    }
+    // if (n > maxLimit) {
+    //     cout << "Number exceeds precomputed limit." << endl;
+    //     return 1;
+    // }
 
-    vector<int> factors = getPrimeFactors(n, spf);
-    cout << "Prime factors of " << n << ": ";
-    for (int factor : factors) {
-        cout << factor << " ";
-    }
-    cout << endl;
+    // vector<int> factors = getPrimeFactors(n, spf);
+    // cout << "Prime factors of " << n << ": ";
+    // for (int factor : factors) {
+    //     cout << factor << " ";
+    // }
+    // cout << endl;
+    primeFactorization(96);
 
     return 0;
 

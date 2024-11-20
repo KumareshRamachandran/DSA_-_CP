@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BST/BST.iml" filepath="$PROJECT_DIR$/BST/BST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodeForces/CodeForces.iml" filepath="$PROJECT_DIR$/CodeForces/CodeForces.iml" />
       <module fileurl="file://$PROJECT_DIR$/Contests/Contests.iml" filepath="$PROJECT_DIR$/Contests/Contests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DP/DP.iml" filepath="$PROJECT_DIR$/DP/DP.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DSA.iml" filepath="$PROJECT_DIR$/.idea/DSA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Daily Problems/Daily Problems.iml" filepath="$PROJECT_DIR$/Daily Problems/Daily Problems.iml" />
       <module fileurl="file://$PROJECT_DIR$/Daily Problems/GFG/GFG.iml" filepath="$PROJECT_DIR$/Daily Problems/GFG/GFG.iml" />

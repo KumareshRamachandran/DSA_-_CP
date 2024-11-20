@@ -2,6 +2,8 @@
 
 using namespace std;
 
+mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
+
 #define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define MOD 1000000007
 #define MOD1 998244353
@@ -13,6 +15,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
+#define Yes cout << "YES" << nline
+#define No cout << "NO" << nline
 #define fall(x, n) for(int x=0; x<n; x++)
 #define rall(x, n) for(int x=n-1; x>=0; x--)
 #define frange(x, start, end) for(int x=start; x<=end; x++)
@@ -20,6 +24,7 @@ using namespace std;
 #define set_bits __builtin_popcountll
 #define vi vector<int>
 #define vii vector<vector<int>>
+#define ii pair<int, int>
 #define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
@@ -54,11 +59,11 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 
 
-
 void solve()
 {
 
 }
+
 
 signed main()
 {
@@ -67,13 +72,18 @@ signed main()
 	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
+	auto begin = std::chrono::high_resolution_clock::now();
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
 	}
+	auto end = std::chrono::high_resolution_clock::now();
+	auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+	cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
 	return 0;
 }
+
