@@ -35,12 +35,7 @@ typedef       long double               lld;
 
 void solve()
 {
-    int n = rand() % 5 + 1, m = rand() % 5 + 1;
-    cout << n << " " << m << "new\n";
-    fall(i, n) {
-        fall(j, m)
-        cout << (rand() % 10) << " \n"[j == m - 1];
-    }
+    
 }
 
 signed main()

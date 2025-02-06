@@ -35,15 +35,7 @@ typedef       long double               lld;
 
 void solve()
 {
-    int n; cin >> n;
-    vi v(n); initValues(i, v);
-    n = unique(all(v)) - v.begin();
-    int cnt = n;
-    fall(i, n - 2) {
-        if (v[i] < v[i + 1] && v[i + 1] < v[i + 2]) cnt--;
-        if (v[i] > v[i + 1] && v[i + 1] > v[i + 2]) cnt--;
-    }
-    cout << cnt << nline;
+    
 }
 
 signed main()
