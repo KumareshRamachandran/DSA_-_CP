@@ -15,9 +15,9 @@ mt19937_64    RNG(chrono::steady_clock::now().time_since_epoch().count());
 #define       rall(x, n)                for(int x=n-1; x>=0; x--)
 #define       frange(x, start, end)     for(int x=start; x<=end; x++)
 #define       rrange(x, start, end)     for(int x=start; x>=end; x--)
+#define       in(i, v)                  for(auto &i: v) cin >> i;
 #define       vi                        vector<int>
 #define       ii                        pair<int, int>
-#define       initValues(i, v)          for(auto &i: v) cin >> i;
 #define       sz(x)                     ((int)(x).size())
 #define       all(x)                    (x).begin(), (x).end()
 
@@ -35,7 +35,7 @@ typedef       long double               lld;
 
 void solve()
 {
-    
+
 }
 
 signed main()
