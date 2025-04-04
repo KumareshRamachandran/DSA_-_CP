@@ -2,6 +2,27 @@
 
 using namespace std;
 
+string sum(string a, string b) {
+    if (sz(a) >= sz(b)) swap(a, b);
+    int carry = 0;
+    rall(i, sz(a)) {
+        int A = (a[i] - '0') + (b[sz(b) - sz(a) + i] - '0') + carry;
+        if (A > 9) {
+            A %= 10; carry = 1;
+        } else carry = 0;
+        b[sz(b) - sz(a) + i] = (A + '0');
+    }
+    rall(i, sz(b) - sz(a)) {
+        int A = (b[i] - '0') + carry;
+        if (A > 9) {
+            A %= 10; carry = 1;
+        } else carry = 0;
+        b[i] = (A + '0');
+    }
+    if (carry) b = '1' + b;
+    return b;
+}
+
 bool isPrime(int n) {
     if (n <= 1) return false;
     if (n <= 3) return true;
@@ -74,6 +95,8 @@ long long binaryExponentiation(long long a, long long b, long long mod) {
     return result;
 }
 
+#define int long long
+
 void sieve(int n, vector<int>& spf) {
     spf.resize(n + 1);
     for (int i = 1; i <= n; i++) {
@@ -100,29 +123,20 @@ vector<int> getPrimeFactors(int x, const vector<int>& spf) {
     return factors;
 }
 
-int main() {
-    int maxLimit = 105;
+signed main() {
+    int maxLimit = 2e6;
     vector<int> spf;
     sieve(maxLimit, spf);
-
-    int n = 96;
-    // cout << "Enter a number: ";
-    // cin >> n;
-
-    // if (n > maxLimit) {
-    //     cout << "Number exceeds precomputed limit." << endl;
-    //     return 1;
-    // }
-
-    // vector<int> factors = getPrimeFactors(n, spf);
-    // cout << "Prime factors of " << n << ": ";
-    // for (int factor : factors) {
-    //     cout << factor << " ";
-    // }
-    // cout << endl;
-    primeFactorization(96);
-
-    return 0;
-
+    int cnt = 0;
+    for (int i = 2; i < maxLimit + 1; ++i)
+    {
+        if (spf[i] == i) {
+            cnt++;
+            if (cnt == 1e5) {
+                cout << i << '\n';
+            }
+        }
+    }
+    cout << cnt;
     return 0;
 }
