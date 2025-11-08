@@ -107,7 +107,42 @@ struct SegmentTree {
         return query(l, r, 0, 0, size);
     }
 };
-//----------------------------
+//-------------------
+
+//-------------------Bridge Counter
+void bridge(int node, int parent) {
+    vis[node] = 1;
+    low[node] = ord[node] = timer++;
+    for (auto &i : adj[node]) {
+        if (i == parent) continue;
+        if (vis[i]) {
+            low[node] = min(low[node], ord[i]);
+        } else {
+            bridge(i, node);
+            low[node] = min(low[node], low[i]);
+            if (low[i] > ord[node]) {
+                brdg.pb({node, i});
+            }
+        }
+    }
+}
+
+//-------------------
+
+//-------------------DFS node count
+int dfs(int node) {
+    int cur = 1;
+    vis[node] = 1;
+    for (auto &i : adj[node]) {
+        if (!vis[i]) {
+            cur += dfs(i);
+        }
+    }
+    return cnt[node] = cur;
+}
+//-------------------
+
+//-------------------
 
 void solve()
 {

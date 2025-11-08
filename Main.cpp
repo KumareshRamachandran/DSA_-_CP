@@ -37,20 +37,7 @@ typedef       long double               lld;
 
 void solve()
 {
-    int n, m; cin >> n >> m;
-    string s, t; cin >> s >> t;
-    vector<vi> dp(n + 1, vi(m + 1));
-    s = "#" + s; t = "#" + t;
-    int ans = 0;
-    frange(i, 1, n) {
-        frange(j, 1, m) {
-            int pos = max(dp[i - 1][j], dp[i][j - 1]) - 1;
-            if (s[i] == t[j]) pos = max(pos, dp[i - 1][j - 1] + 2);
-            dp[i][j] = max(pos, 0ll);
-            ans = max(ans, dp[i][j]);
-        }
-    }
-    cout << ans << nline;
+
 }
 
 signed main()
@@ -60,6 +47,7 @@ signed main()
 #endif
     auto begin = chrono::high_resolution_clock::now(); fastio();
     int t = 1;
+    cin >> t; cin.ignore();
     while (t--) solve();
     auto end = chrono::high_resolution_clock::now();
     auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);

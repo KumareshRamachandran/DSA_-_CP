@@ -41,9 +41,7 @@ int rngnum(int a, int b) {
 
 void solve()
 {
-    int n = rngnum(3, 6);
-    cout << n << nline;
-    fall(i, n) cout << rngnum(-5, 5) << " \n"[i == n - 1];
+
 }
 
 signed main()
