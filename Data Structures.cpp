@@ -109,6 +109,28 @@ struct SegmentTree {
 };
 //-------------------
 
+//-------------------Short Segment Tree
+struct Tree {
+    typedef int T;
+    static constexpr T unit = 0;
+    T f(T a, T b) { return __gcd(a, b); }
+    vector<T> s; int n;
+    Tree(int n = 0, T def = unit) : s(2 * n, def), n(n) {}
+    void update(int pos, T val) {
+        for (s[pos += n] = val; pos /= 2;)
+            s[pos] = f(s[pos * 2], s[pos * 2 + 1]);
+    }
+    T query(int b, int e) {
+        T ra = unit, rb = unit;
+        for (b += n, e += n; b < e; b /= 2, e /= 2) {
+            if (b % 2) ra = f(ra, s[b++]);
+            if (e % 2) rb = f(s[--e], rb);
+        }
+        return f(ra, rb);
+    }
+};
+//--------------------
+
 //-------------------Bridge Counter
 void bridge(int node, int parent) {
     vis[node] = 1;
@@ -142,7 +164,86 @@ int dfs(int node) {
 }
 //-------------------
 
-//-------------------
+//-------------------Sparse Table (Errichto)
+const int MAX_N = 100005;
+const int LOG = 17;
+int a[MAX_N];
+int m[MAX_N][LOG];
+int bin_log[MAX_N];
+
+int query(int L, int R) {
+    int length = R - L + 1;
+    int k = bin_log[length];
+    return min(m[L][k], m[R - (1 << k) + 1][k]);
+}
+
+void build(int n) {
+    bin_log[1] = 0;
+    for (int i = 2; i <= n; i++) {
+        bin_log[i] = bin_log[i / 2] + 1;
+    }
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        m[i][0] = a[i];
+    }
+    for (int k = 1; k < LOG; k++) {
+        for (int i = 0; i + (1 << k) - 1 < n; i++) {
+            m[i][k] = min(m[i][k - 1], m[i + (1 << (k - 1))][k - 1]);
+        }
+    }
+}
+//------------------------
+
+//------------------------Binary Lifting
+int n, l;
+vector<vector<int>> adj;
+
+int timer;
+vector<int> tin, tout;
+vector<vector<int>> up;
+
+void dfs(int v, int p)
+{
+    tin[v] = ++timer;
+    up[v][0] = p;
+    for (int i = 1; i <= l; ++i)
+        up[v][i] = up[up[v][i - 1]][i - 1];
+
+    for (int u : adj[v]) {
+        if (u != p)
+            dfs(u, v);
+    }
+
+    tout[v] = ++timer;
+}
+
+bool is_ancestor(int u, int v)
+{
+    return tin[u] <= tin[v] && tout[u] >= tout[v];
+}
+
+int lca(int u, int v)
+{
+    if (is_ancestor(u, v))
+        return u;
+    if (is_ancestor(v, u))
+        return v;
+    for (int i = l; i >= 0; --i) {
+        if (!is_ancestor(up[u][i], v))
+            u = up[u][i];
+    }
+    return up[u][0];
+}
+
+void preprocess(int root) {
+    tin.resize(n);
+    tout.resize(n);
+    timer = 0;
+    l = ceil(log2(n));
+    up.assign(n, vector<int>(l + 1));
+    dfs(root, root);
+}
+//------------------------
 
 void solve()
 {

@@ -1,1 +1,1 @@
-Time measured <= *_* => 0.000040 seconds.
+Time measured <= *_* => 0.000028 seconds.
