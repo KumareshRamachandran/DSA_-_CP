@@ -4,7 +4,6 @@ using namespace std;
 
 mt19937_64    rng(chrono::steady_clock::now().time_since_epoch().count());
 
-#define       fastio()                  ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define       nline                     "\n"
 #define       pb                        push_back
 #define       ppb                       pop_back
@@ -21,6 +20,7 @@ mt19937_64    rng(chrono::steady_clock::now().time_since_epoch().count());
 #define       sz(x)                     ((int)(x).size())
 #define       all(x)                    (x).begin(), (x).end()
 #define       mod                       1000000007
+#define       INF                       0x1fffffffffffffffLL
 
 typedef       long long                 ll;
 typedef       unsigned long long        ull;
@@ -66,14 +66,15 @@ void solve()
 signed main()
 {
 #ifdef LOCAL
-    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout); freopen("error.txt", "w", stderr);
+    freopen("i.txt", "r", stdin); freopen("o.txt", "w", stdout); freopen("e.txt", "w", stderr);
 #endif
-    auto begin = chrono::high_resolution_clock::now(); fastio();
+    auto begin = chrono::high_resolution_clock::now();
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     int t = 1;
-    // cin >> t; cin.ignore();
+    cin >> t; cin.ignore();
     while (t--) solve();
     auto end = chrono::high_resolution_clock::now();
     auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
-    cerr << fixed << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
+    cerr << fixed << "Time measured <= *_* => " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
