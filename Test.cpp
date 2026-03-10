@@ -4,7 +4,6 @@ using namespace std;
 
 mt19937_64    rng(chrono::steady_clock::now().time_since_epoch().count());
 
-#define       fastio()                  ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define       nline                     "\n"
 #define       pb                        push_back
 #define       ppb                       pop_back
@@ -33,44 +32,25 @@ typedef       long double               lld;
 #define       debug(x)
 #endif
 
-// *find_by_order // order_of_key
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordst;
-
 #define       int                       long long
 
 int rngnum(int a, int b) {
     return a + (rng() % (b - a + 1));
 }
 
-bool isPrime(int n) {
-    if (n <= 1) return 0;
-    if (n <= 3) return 1;
-    if (n % 2 == 0 || n % 3 == 0) return 0;
-    for (int i = 5; i * i <= n; i += 6) {
-        if (n % i == 0 || n % (i + 2) == 0) return 0;
-    }
-    return 1;
-}
-
 void solve()
 {
-    int n = rngnum(2, 4);
-    cout << n << nline;
-    fall(i, n) cout << rngnum(2, 5) << " ";
-    cout << nline;
-    debug(isPrime(67))
+
 }
 
 signed main()
 {
 #ifdef LOCAL
-    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout); freopen("error.txt", "w", stderr);
+    freopen("i.txt", "r", stdin); freopen("o.txt", "w", stdout); freopen("e.txt", "w", stderr);
 #endif
-    auto begin = chrono::high_resolution_clock::now(); fastio();
-    int t = 3;
+    auto begin = chrono::high_resolution_clock::now();
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    int t = 1;
     while (t--) solve();
     auto end = chrono::high_resolution_clock::now();
     auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - begin);
